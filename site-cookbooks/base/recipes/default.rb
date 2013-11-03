@@ -6,7 +6,7 @@
 #
 # All rights reserved - Do Not Redistribute
 #
-%w{git rbenv bundler curl}.each do |pkg|
+%w{git rbenv bundler curl libxslt-dev libxml2-dev}.each do |pkg|
   package pkg do
     action :install
   end
