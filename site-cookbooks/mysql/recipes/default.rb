@@ -14,18 +14,24 @@ authorized_keys_for 'remper'
   end
 end
 
-mycnf_path = '/etc/mysql/my.cnf'
+%w{mysql}.each do |pkg|
+  service pkg do
+    action :stop
+  end
+end
+
+mycnf_path = "/etc/mysql/my.cnf"
 
 template mycnf_path do
   user 'root'
   group 'root'
   mode 644
-  source 'default/my.cnf.erb'
+  source 'my.cnf.erb'
 end
 
 %w{mysql}.each do |pkg|
   service pkg do
-    action :restart
+    action :start
   end
 end
 
