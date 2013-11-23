@@ -14,4 +14,9 @@ authorized_keys_for 'remper'
   end
 end
 
+%w{mysql}.each do |pkg|
+  service pkg do
+    action :restart
+  end
+end
 
