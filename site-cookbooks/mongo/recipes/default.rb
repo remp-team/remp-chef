@@ -19,6 +19,13 @@ template "/etc/mongodb.conf" do
   source 'mongodb.conf.erb'
 end
 
+cookbook_file "/home/remper/mongodb_backup" do
+  source "mongodb_backup"
+  user 'remper'
+  group 'remper'
+  mode "0744"
+end
+
 %w{mongodb}.each do |pkg|
   service pkg do
     action :restart
