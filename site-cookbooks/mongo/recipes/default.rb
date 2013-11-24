@@ -19,13 +19,29 @@ template "/etc/mongodb.conf" do
   source 'mongodb.conf.erb'
 end
 
-cookbook_file "/home/remper/mongodb_backup" do
+# MongoDB backup settings.
+backup_script_name = "/home/remper/mongodb_backup"
+
+cookbook_file backup_script_name do
   source "mongodb_backup"
   user 'remper'
   group 'remper'
   mode "0744"
 end
 
+base_min = 51
+%w{storyboards_production remp3_production}.each do |db_name|
+  cron "Backup #{db_name} DB" do
+    user "remper"
+    command "/bin/sh #{backup_script_name} #{db_name}"
+    hour "19"
+    minute "#{base_min}"
+  end
+
+  base_min = base_min + 5
+end
+
+# MongoDB restart
 %w{mongodb}.each do |pkg|
   service pkg do
     action :restart
