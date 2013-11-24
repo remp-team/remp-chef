@@ -1,0 +1,29 @@
+#!/bin/sh
+
+DB_NAME=$1
+if [ -z $DB_NAME ]; then
+  echo 'require database name'
+  exit
+fi
+
+DUMP_COMMAND=/usr/bin/mongodump
+BACKUP_BASE_DIR=~/backupdb
+
+BACKUP_DIR=$BACKUP_BASE_DIR/$DB_NAME
+DUMP_DIR=$BACKUP_DIR/dump
+BACKUP_FILE=$BACKUP_DIR/${DB_NAME}_`date +"%Y%m%d-%H%M%S"`.tar.gz
+
+# remove dump dir
+rm -rf $DUMP_DIR
+
+# dump db data
+$DUMP_COMMAND -o $DUMP_DIR -d $DB_NAME
+
+# remove old file
+find $BACKUP_DIR -type f -mtime +30 | xargs rm -f
+
+# compress
+tar vczPf $BACKUP_FILE $DUMP_DIR
+
+scp -P 2222 $BACKUP_FILE storyboads@ssh176.heteml.jp:~/backup/stbddb
+
