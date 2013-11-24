@@ -34,7 +34,7 @@ base_min = 51
   cron "Backup #{db_name} DB" do
     user "remper"
     command "/bin/sh #{backup_script_name} #{db_name}"
-    hour "19"
+    hour "3"
     minute "#{base_min}"
   end
 
