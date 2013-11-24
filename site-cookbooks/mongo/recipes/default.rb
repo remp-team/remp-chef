@@ -2,7 +2,7 @@
 # Cookbook Name:: mongo
 # Recipe:: default
 #
-# Copyright 2013, YOUR_COMPANY_NAME
+# Copyright 2013, REMP team
 #
 # All rights reserved - Do Not Redistribute
 
