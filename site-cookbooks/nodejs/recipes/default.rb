@@ -6,7 +6,7 @@
 #
 # All rights reserved - Do Not Redistribute
 
-%w{python-software-properties python g++ make}.each do |pkg|
+%w{nodejs npm}.each do |pkg|
   package pkg do
     action :install
   end
