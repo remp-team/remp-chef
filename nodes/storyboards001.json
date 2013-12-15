@@ -1,1 +1,1 @@
-{"run_list":["base", "nodejs"]}
+{"run_list":["base", "nodejs", "screenshot"]}
