@@ -1,1 +1,1 @@
-{"run_list":["base", "nodejs", "screenshot"]}
+{"run_list":["base", "storyboards-app-base", "nodejs", "screenshot"]}
