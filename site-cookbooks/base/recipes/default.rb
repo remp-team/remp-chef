@@ -9,7 +9,11 @@
 
 authorized_keys_for 'remper'
 
-%w{git rbenv bundler curl libxslt-dev libxml2-dev language-pack-ja-base}.each do |pkg|
+execute "apt-get update" do
+  user "root"
+end
+
+%w{git rbenv ruby-build bundler curl libxslt-dev libxml2-dev language-pack-ja-base}.each do |pkg|
   package pkg do
     action :install
   end
