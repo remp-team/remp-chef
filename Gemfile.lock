@@ -4,6 +4,7 @@ GEM
     diff-lcs (1.2.5)
     highline (1.6.21)
     net-ssh (2.8.0)
+    rake (10.3.1)
     rspec (2.14.1)
       rspec-core (~> 2.14.0)
       rspec-expectations (~> 2.14.0)
@@ -23,4 +24,5 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  rake
   serverspec
