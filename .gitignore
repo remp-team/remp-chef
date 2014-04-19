@@ -1,2 +1,4 @@
 /cookbooks/
 *.swp
+vendor/*
+.bundle/*
