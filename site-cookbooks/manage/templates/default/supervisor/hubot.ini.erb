@@ -1,0 +1,7 @@
+[program:Hubot]
+command=cd /home/remper/hubot/current && /bin/hubot -a lingr
+user=remper
+autorestart=true
+stdout_logfile=/var/log/supervisor/hubot.log
+redirect_stderr=true
+
