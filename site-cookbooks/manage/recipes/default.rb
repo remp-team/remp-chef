@@ -27,4 +27,7 @@ template "/etc/supervisor/conf.d/hubot.conf" do
   group "remper"
 end
 
-
+service "supervisor" do
+  supports :restart => true, :reload => true
+  action :enable
+end
