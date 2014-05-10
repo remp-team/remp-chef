@@ -1,0 +1,9 @@
+[program:npm_lazy]
+command=/usr/bin/npm_lazy --config /home/remper/npm_lazy.config.js
+directory=/home/remper
+environment=HOME="/home/remper",USER="remper"
+user=remper
+autorestart=true
+stdout_logfile=/var/log/supervisor/npm_lazy.log
+redirect_stderr=true
+
