@@ -16,6 +16,13 @@ bash "npm_lazy" do
   EOH
 end
 
+directory '/home/remper/.npm_lazy' do
+    owner   'remper'
+    group   'remper'
+    mode    '0755'
+    action  :create
+end
+
 template "/home/remper/.npm_lazy/npm_lazy.config.js" do
   source "npm_lazy/npm_lazy.config.js.erb"
   mode 0644
@@ -39,6 +46,13 @@ end
 
 template "/etc/supervisor/conf.d/hubot.conf" do
   source "supervisor/hubot.conf.erb"
+  mode 0644
+  owner "remper"
+  group "remper"
+end
+
+template "/etc/supervisor/conf.d/npm_lazy.conf" do
+  source "supervisor/npm_lazy.conf.erb"
   mode 0644
   owner "remper"
   group "remper"
