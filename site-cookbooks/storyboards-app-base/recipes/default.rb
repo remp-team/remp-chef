@@ -29,8 +29,8 @@ end
 
 cron "Casto temporary code erasing." do
   user "remper"
-  command "cd ~/storyboards/current && bundle exec padrino rake codecleaner[2,1] -e production"
-  hour "5"
-  minute "35"
+  command "cd ~/storyboards/current && bundle exec padrino rake codecleaner -e production"
+  hour "*/1"
+  minute "30"
 end
 
