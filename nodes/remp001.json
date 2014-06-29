@@ -1,1 +1,1 @@
-{"run_list":["base", "ruby"]}
+{"run_list":["base", "ruby", "cron"]}

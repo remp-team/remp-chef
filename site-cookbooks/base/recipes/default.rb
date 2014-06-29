@@ -23,8 +23,4 @@ execute "Set timezone" do
   command "rm -rf /etc/localtime && ln -s /usr/share/zoneinfo/Asia/Tokyo /etc/localtime"
 end
 
-# Cron restart.
-service "cron" do
-  action :restart
-end
 
