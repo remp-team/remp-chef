@@ -16,10 +16,6 @@ execute "add-apt-repository -y ppa:chris-lea/node.js" do
   user "root"
 end
 
-execute "apt-get update" do
-  user "root"
-end
-
 %w{nodejs}.each do |pkg|
   package pkg do
     action :install

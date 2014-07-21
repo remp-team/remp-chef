@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# http://unicorn.bogomips.org/SIGNALS.html
+
+oldMasterPid=`pgrep -f 'unicorn master'`
+echo "Target unicorn master PID: $oldMasterPid"
+
+kill -s USR2 $oldMasterPid
+echo "USR2 signal send to unicorn master."
+
+until [ "`pgrep -f 'unicorn master' | wc -l`" != "1" ]; do
+  echo "Wait for unicorn master process closing."
+  sleep 1
+done
+
+kill -s WINCH $oldMasterPid
+echo "WINCH signal send to unicorn master."
+
+until [ "`pgrep -P $oldMasterPid -f 'unicorn worker'; echo \$?`" = "1" ]; do
+  echo "Wait for unicorn worker process closing."
+  sleep 1
+done
+
+kill -s QUIT $oldMasterPid
+echo "QUIT signal send to unicorn master."
+

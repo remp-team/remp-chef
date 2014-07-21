@@ -1,1 +1,1 @@
-{"run_list":["base", "ruby", "cron"]}
+{"run_list":["base", "ruby", "cron", "unicorn-scripts"]}
