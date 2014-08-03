@@ -12,7 +12,11 @@
   end
 end
 
-execute "add-apt-repository -y ppa:chris-lea/node.js" do
+execute "add-apt-repository ppa:chris-lea/node.js" do
+  user "root"
+end
+
+execute "apt-get update" do
   user "root"
 end
 
