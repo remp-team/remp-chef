@@ -1,1 +1,1 @@
-{"run_list":["unicorn-scripts", "base", "storyboards-app-base", "nodejs", "screenshot"]}
+{"run_list":["unicorn-scripts", "base", "storyboards-app-base", "nodejs", "screenshot", "ruby"]}
