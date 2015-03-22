@@ -41,6 +41,15 @@ cron "Daily report" do
   only_if {node['hostname'] == "remp001"}
 end
 
+### For manage001 container.
+cron "Hubot restart" do
+  user "remper"
+  command "supervisorctl restart Hubot"
+  hour "08"
+  minute "00"
+  only_if {node['hostname'] == "manage001"}
+end
+
 # Cron restart.
 service "cron" do
   action :restart
