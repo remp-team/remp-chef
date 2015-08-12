@@ -20,7 +20,7 @@ rm -rf $DUMP_DIR
 $DUMP_COMMAND -o $DUMP_DIR -d $DB_NAME
 
 # remove old file
-find $BACKUP_DIR -type f -mtime +30 | xargs rm -f
+find $BACKUP_DIR -type f -mtime +5 | xargs rm -f
 
 # compress
 tar vczPf $BACKUP_FILE $DUMP_DIR
